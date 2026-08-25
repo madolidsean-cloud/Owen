@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Holes - Cosmic Mysteries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #0f3460;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #16213e;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #0f3460;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #0f3460;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .info-box {
+            background-color: #f0f4ff;
+            border-left: 4px solid #0f3460;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            color: #0f3460;
+            margin-top: 0;
+        }
+
+        .fact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .fact-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .fact-list li:before {
+            content: "★";
+            color: #0f3460;
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+        }
+
+        .fact-list li:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background-color: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            nav ul li {
+                margin: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌌 Black Holes</h1>
+        <p>Exploring the Universe's Most Mysterious Objects</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#what">What Are They?</a></li>
+            <li><a href="#types">Types</a></li>
+            <li><a href="#formation">Formation</a></li>
+            <li><a href="#facts">Facts</a></li>
+            <li><a href="#research">Research</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="what">
+            <h2>What Are Black Holes?</h2>
+            <p>
+                A black hole is a region in space where gravity is so strong that nothing, not even light, 
+                can escape from within its event horizon. Black holes are among the most mysterious and 
+                fascinating objects in the universe, formed from the remnants of massive stars.
+            </p>
+            <div class="info-box">
+                <strong>Key Concept:</strong> The event horizon is the boundary around a black hole beyond 
+                which no light or matter can escape. This is why black holes appear black—they don't emit 
+                any visible light.
+            </div>
+            <p>
+                The existence of black holes was predicted by Albert Einstein's theory of general relativity 
+                in 1915. For decades, they remained theoretical until astronomical observations in the 20th 
+                century provided compelling evidence for their existence.
+            </p>
+        </section>
+
+        <section id="types">
+            <h2>Types of Black Holes</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Stellar Black Holes</h3>
+                    <p>
+                        Formed from the collapse of massive stars at the end of their life cycles. 
+                        They typically have masses 5-20 times that of our Sun.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>Supermassive Black Holes</h3>
+                    <p>
+                        Found at the centers of most galaxies, including our own Milky Way. They contain 
+                        millions to billions of solar masses.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>Primordial Black Holes</h3>
+                    <p>
+                        Hypothetical black holes formed in the early universe. They could be much smaller 
+                        than stellar black holes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formation">
+            <h2>Formation of Black Holes</h2>
+            <h3>Stellar Collapse</h3>
+            <p>
+                When a massive star (at least 20-25 times the mass of our Sun) reaches the end of its life, 
+                it undergoes a catastrophic collapse. The star's core compresses infinitely, creating a 
+                singularity—a point of infinite density.
+            </p>
+            <h3>The Process:</h3>
+            <ol style="margin-left: 20px; margin-bottom: 15px;">
+                <li>Massive star exhausts its fuel</li>
+                <li>Core collapses under its own gravity</li>
+                <li>Supernova explosion may occur</li>
+                <li>Remaining core forms a black hole</li>
+            </ol>
+        </section>
+
+        <section id="facts">
+            <h2>Fascinating Facts About Black Holes</h2>
+            <ul class="fact-list">
+                <li>The singularity at the center of a black hole is infinitely dense and small</li>
+                <li>Time moves differently near a black hole due to extreme gravity (time dilation)</li>
+                <li>The supermassive black hole at the center of our galaxy is called Sagittarius A*</li>
+                <li>Light cannot escape a black hole, making them invisible to direct observation</li>
+                <li>Hawking radiation suggests black holes can slowly evaporate over time</li>
+                <li>The first image of a black hole was captured in 2019 (M87)</li>
+                <li>Gravitational waves are produced when black holes merge</li>
+                <li>Some black holes have accretion disks that emit X-rays and other radiation</li>
+            </ul>
+        </section>
+
+        <section id="research">
+            <h2>Current Research</h2>
+            <p>
+                Scientists continue to study black holes using various methods and technologies:
+            </p>
+            <div class="info-box">
+                <strong>Event Horizon Telescope (EHT):</strong> A global array of radio telescopes that 
+                combined observations to capture the first-ever images of black holes, providing direct 
+                visual evidence of these cosmic objects.
+            </div>
+            <div class="info-box">
+                <strong>Gravitational Wave Detection:</strong> Observatories like LIGO detect ripples 
+                in spacetime caused by colliding black holes and neutron stars, opening new ways to 
+                study these objects.
+            </div>
+            <p>
+                Future observations promise to deepen our understanding of black holes and their role 
+                in the universe's evolution and structure. The mysteries of black holes continue to 
+                inspire scientists and capture the public imagination.
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Black Holes - Cosmic Mysteries</p>
+        <p>Explore the wonders of the universe</p>
+    </footer>
+</body>
+</html>
