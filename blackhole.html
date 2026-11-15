@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore black holes, how they form, and what JWST has revealed about possible black-hole stars in the early universe.">
     <title>Black Holes - Cosmic Mysteries</title>
     <style>
         * {
@@ -52,7 +53,7 @@
         }
 
         nav ul li {
-            margin: 0 20px;
+            margin: 0 16px;
         }
 
         nav ul li a {
@@ -62,7 +63,8 @@
             transition: color 0.3s ease;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover,
+        nav ul li a:focus {
             color: #00d4ff;
         }
 
@@ -74,6 +76,7 @@
 
         section {
             margin-bottom: 50px;
+            scroll-margin-top: 85px;
         }
 
         h2 {
@@ -93,7 +96,6 @@
 
         p {
             margin-bottom: 15px;
-            text-align: justify;
         }
 
         .info-box {
@@ -136,13 +138,12 @@
         }
 
         .fact-list li {
-            padding: 12px 0;
+            padding: 12px 0 12px 30px;
             border-bottom: 1px solid #e0e0e0;
-            padding-left: 30px;
             position: relative;
         }
 
-        .fact-list li:before {
+        .fact-list li::before {
             content: "★";
             color: #0f3460;
             font-size: 1.2em;
@@ -152,6 +153,24 @@
 
         .fact-list li:last-child {
             border-bottom: none;
+        }
+
+        .source-list {
+            padding-left: 22px;
+            margin: 12px 0;
+        }
+
+        .source-list li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #0f5795;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #00a6cc;
+            outline-offset: 3px;
         }
 
         footer {
@@ -164,7 +183,6 @@
 
         footer p {
             margin: 5px 0;
-            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -177,7 +195,18 @@
             }
 
             nav ul li {
-                margin: 10px 15px;
+                margin: 8px 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .feature-card:hover {
+                transform: none;
             }
         }
     </style>
@@ -188,119 +217,206 @@
         <p>Exploring the Universe's Most Mysterious Objects</p>
     </header>
 
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
             <li><a href="#what">What Are They?</a></li>
             <li><a href="#types">Types</a></li>
             <li><a href="#formation">Formation</a></li>
+            <li><a href="#jwst">JWST &amp; Black-Hole Stars</a></li>
             <li><a href="#facts">Facts</a></li>
             <li><a href="#research">Research</a></li>
         </ul>
     </nav>
 
-    <div class="container">
+    <main class="container">
         <section id="what">
             <h2>What Are Black Holes?</h2>
             <p>
-                A black hole is a region in space where gravity is so strong that nothing, not even light, 
-                can escape from within its event horizon. Black holes are among the most mysterious and 
-                fascinating objects in the universe, formed from the remnants of massive stars.
+                A black hole is a region of spacetime whose gravity is so strong that, once matter or light
+                crosses its event horizon, it cannot get back out. The event horizon is a boundary, not a
+                solid surface. Black holes are detected by observing how they affect nearby stars and gas,
+                and by studying radiation from material falling toward them.
             </p>
             <div class="info-box">
-                <strong>Key Concept:</strong> The event horizon is the boundary around a black hole beyond 
-                which no light or matter can escape. This is why black holes appear black—they don't emit 
-                any visible light.
+                <strong>Key concept:</strong> A black hole itself does not shine like a star. However, gas
+                spiraling around it can become extremely hot and bright before crossing the event horizon.
+                That glowing material is one of the ways astronomers find and study black holes.
             </div>
             <p>
-                The existence of black holes was predicted by Albert Einstein's theory of general relativity 
-                in 1915. For decades, they remained theoretical until astronomical observations in the 20th 
-                century provided compelling evidence for their existence.
+                Black holes are predicted by Einstein's general theory of relativity. Astronomers now have
+                several kinds of evidence for them, including stellar orbits, X-rays from hot gas, gravitational
+                waves from mergers, and images of the glowing surroundings of black holes.
             </p>
         </section>
 
         <section id="types">
             <h2>Types of Black Holes</h2>
             <div class="features">
-                <div class="feature-card">
-                    <h3>Stellar Black Holes</h3>
+                <article class="feature-card">
+                    <h3>Stellar-mass black holes</h3>
                     <p>
-                        Formed from the collapse of massive stars at the end of their life cycles. 
-                        They typically have masses 5-20 times that of our Sun.
+                        These form when the cores of some massive stars collapse at the end of their lives.
+                        Their masses are several to many times the mass of the Sun; the exact outcome depends
+                        on the star and its surroundings.
                     </p>
-                </div>
-                <div class="feature-card">
-                    <h3>Supermassive Black Holes</h3>
+                </article>
+                <article class="feature-card">
+                    <h3>Supermassive black holes</h3>
                     <p>
-                        Found at the centers of most galaxies, including our own Milky Way. They contain 
-                        millions to billions of solar masses.
+                        These contain millions or billions of solar masses and are found in the centers of
+                        many large galaxies. How the earliest supermassive black holes gained their first
+                        mass so quickly is an active research question.
                     </p>
-                </div>
-                <div class="feature-card">
-                    <h3>Primordial Black Holes</h3>
+                </article>
+                <article class="feature-card">
+                    <h3>Intermediate-mass candidates</h3>
                     <p>
-                        Hypothetical black holes formed in the early universe. They could be much smaller 
-                        than stellar black holes.
+                        Black holes between stellar-mass and supermassive sizes are difficult to find. A number
+                        of candidates have been reported, and astronomers are working to establish their masses
+                        and nature.
                     </p>
-                </div>
+                </article>
+                <article class="feature-card">
+                    <h3>Primordial black holes</h3>
+                    <p>
+                        These are hypothetical black holes that may have formed from dense regions in the very
+                        early universe. They have not been confirmed.
+                    </p>
+                </article>
             </div>
         </section>
 
         <section id="formation">
-            <h2>Formation of Black Holes</h2>
-            <h3>Stellar Collapse</h3>
+            <h2>How Black Holes Form</h2>
+            <h3>From the death of a massive star</h3>
             <p>
-                When a massive star (at least 20-25 times the mass of our Sun) reaches the end of its life, 
-                it undergoes a catastrophic collapse. The star's core compresses infinitely, creating a 
-                singularity—a point of infinite density.
+                A massive star spends much of its life balancing inward gravity with outward pressure from
+                nuclear fusion. When its fuel is depleted, the core may no longer be able to support itself.
+                It collapses, and the star's outer layers may be expelled in a supernova. If the remaining core
+                is massive enough, it can continue collapsing into a black hole. Not every massive star makes
+                a black hole; some leave neutron stars instead.
             </p>
-            <h3>The Process:</h3>
-            <ol style="margin-left: 20px; margin-bottom: 15px;">
-                <li>Massive star exhausts its fuel</li>
-                <li>Core collapses under its own gravity</li>
-                <li>Supernova explosion may occur</li>
-                <li>Remaining core forms a black hole</li>
+            <h3>Possible routes to the first giant black holes</h3>
+            <p>
+                The first supermassive black holes had to grow in a young universe. One proposed route starts
+                with ordinary stellar remnants that gain mass by pulling in gas and merging with other black
+                holes. Another is a <strong>heavy seed</strong>: in special conditions, a large cloud of early,
+                mostly hydrogen and helium gas may avoid breaking into many normal stars and collapse into a
+                much more massive black-hole seed. This is called the direct-collapse scenario. It is a leading
+                hypothesis, not a process JWST has watched happen conclusively.
+            </p>
+            <div class="info-box">
+                <strong>Why the early universe is a puzzle:</strong> JWST has found candidate actively growing
+                black holes in very distant galaxies. Because their light has traveled for billions of years,
+                we see them as they were when the universe was young. Their apparent early presence motivates
+                theories for rapid growth and massive starting seeds, but observations do not yet identify one
+                single formation route for all of them.
+            </div>
+        </section>
+
+        <section id="jwst">
+            <h2>JWST and the “Black-Hole Star” Idea</h2>
+            <p>
+                The James Webb Space Telescope (JWST) observes infrared light, allowing it to study very distant
+                galaxies whose light has been stretched by the expansion of the universe. Webb can take spectra:
+                spreading an object's light into a rainbow of wavelengths so astronomers can examine features
+                made by atoms and molecules. Those features help reveal the object's distance, gas, and energy
+                sources.
+            </p>
+            <h3>What has Webb found?</h3>
+            <p>
+                Webb has identified compact, very distant objects nicknamed <em>little red dots</em>. In 2026,
+                NASA reported that deep JWST spectroscopy of the lensed candidate GLIMPSE-17775 showed a rich
+                set of emission-line features consistent with hot, dense gas around a rapidly feeding black
+                hole. The spectrum offers the strongest evidence yet for the proposed “black-hole star” picture.
+                The interpretation is based on the object's light and its spectral fingerprints—not a direct
+                photograph of a black hole or of one forming.
+            </p>
+            <div class="info-box">
+                <strong>Important caveat:</strong> “Strongest evidence yet” is not the same as final proof.
+                Astronomers compare the observed spectrum with predictions and alternative explanations.
+                These distant, faint objects are challenging to measure, so follow-up observations and analysis
+                are needed to test the interpretation.
+            </div>
+            <h3>What does “black-hole star” mean?</h3>
+            <p>
+                In this context, it does not mean a normal star with a black hole inside it. It is a proposed,
+                short-lived stage in which a growing black hole is wrapped in a thick envelope of gas. Gas
+                falling inward releases energy; the surrounding material absorbs and re-emits some of that
+                energy, making the whole unresolved object look compact and star-like from far away. The black
+                hole powers the glow through accretion, rather than through ordinary stellar fusion.
+            </p>
+            <h3>How might one form?</h3>
+            <ol style="margin-left: 22px; margin-bottom: 15px;">
+                <li>A dense, early-universe gas cloud collapses and may create a relatively massive black-hole seed.</li>
+                <li>The seed sits in a gas-rich environment and pulls in surrounding material.</li>
+                <li>Rapid accretion heats the infalling gas and produces intense radiation.</li>
+                <li>A thick gas envelope can reprocess that light, giving the system a compact, star-like appearance.</li>
+                <li>As the black hole grows or the surrounding gas is dispersed, this “black-hole star” phase would end.</li>
             </ol>
+            <p>
+                Direct collapse and a black-hole star describe related but different ideas: direct collapse is
+                a proposed way to make a massive seed; “black-hole star” describes a possible luminous,
+                gas-enshrouded accretion phase. JWST's candidate evidence does not by itself prove how the seed
+                originally formed.
+            </p>
+            <div class="info-box">
+                <strong>Not the same as a dark star:</strong> In much of astrophysics, “dark star” refers to a
+                hypothetical early star whose energy comes from dark-matter annihilation. A “black-hole star”
+                in the JWST reports is instead a black hole accreting gas inside a dense envelope. The names
+                sound similar, but the proposed objects and power sources are different.
+            </div>
+            <p>
+                <strong>Further reading:</strong>
+            </p>
+            <ul class="source-list">
+                <li><a href="https://science.nasa.gov/missions/webb/nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars/" target="_blank" rel="noopener noreferrer">NASA: Webb finds strongest evidence yet for “black-hole stars”</a></li>
+                <li><a href="https://science.nasa.gov/blogs/webb/2025/07/15/nasas-webb-finds-possible-direct-collapse-black-hole/" target="_blank" rel="noopener noreferrer">NASA: Webb finds a possible direct-collapse black hole</a></li>
+            </ul>
         </section>
 
         <section id="facts">
             <h2>Fascinating Facts About Black Holes</h2>
             <ul class="fact-list">
-                <li>The singularity at the center of a black hole is infinitely dense and small</li>
-                <li>Time moves differently near a black hole due to extreme gravity (time dilation)</li>
-                <li>The supermassive black hole at the center of our galaxy is called Sagittarius A*</li>
-                <li>Light cannot escape a black hole, making them invisible to direct observation</li>
-                <li>Hawking radiation suggests black holes can slowly evaporate over time</li>
-                <li>The first image of a black hole was captured in 2019 (M87)</li>
-                <li>Gravitational waves are produced when black holes merge</li>
-                <li>Some black holes have accretion disks that emit X-rays and other radiation</li>
+                <li>Black holes can be detected through their effects on nearby matter, even though the black hole itself emits no light from inside its event horizon.</li>
+                <li>Gravity affects the passage of time; clocks close to a black hole run differently compared with clocks far away.</li>
+                <li>The supermassive black hole at the center of the Milky Way is called Sagittarius A*.</li>
+                <li>The Event Horizon Telescope collaboration released the first image of a black hole's shadow, in galaxy M87, in 2019.</li>
+                <li>Hawking radiation is a theoretical prediction that black holes can slowly lose energy; it has not been detected from an astrophysical black hole.</li>
+                <li>When black holes merge, they send ripples through spacetime called gravitational waves.</li>
+                <li>Hot gas in an accretion disk around a black hole can emit X-rays and other radiation.</li>
             </ul>
         </section>
 
         <section id="research">
-            <h2>Current Research</h2>
+            <h2>How Scientists Study Black Holes</h2>
             <p>
-                Scientists continue to study black holes using various methods and technologies:
+                No single telescope can answer every question about black holes. Astronomers combine observations
+                across the electromagnetic spectrum with gravitational-wave measurements and computer models.
             </p>
             <div class="info-box">
-                <strong>Event Horizon Telescope (EHT):</strong> A global array of radio telescopes that 
-                combined observations to capture the first-ever images of black holes, providing direct 
-                visual evidence of these cosmic objects.
+                <strong>Event Horizon Telescope (EHT):</strong> A planet-wide network of radio observatories
+                that has produced images of the glowing surroundings and shadows of supermassive black holes.
             </div>
             <div class="info-box">
-                <strong>Gravitational Wave Detection:</strong> Observatories like LIGO detect ripples 
-                in spacetime caused by colliding black holes and neutron stars, opening new ways to 
-                study these objects.
+                <strong>Gravitational-wave observatories:</strong> LIGO, Virgo, and KAGRA measure ripples in
+                spacetime from events such as black-hole mergers, providing information about the objects' masses
+                and spins.
+            </div>
+            <div class="info-box">
+                <strong>JWST:</strong> Webb's infrared imaging and spectroscopy help astronomers investigate
+                distant galaxies and possible actively growing black holes from the early universe.
             </div>
             <p>
-                Future observations promise to deepen our understanding of black holes and their role 
-                in the universe's evolution and structure. The mysteries of black holes continue to 
-                inspire scientists and capture the public imagination.
+                By comparing evidence from these different methods, scientists can test how black holes grow,
+                how they affect their galaxies, and whether proposed early-universe objects are truly powered
+                by black holes.
             </p>
         </section>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2024 Black Holes - Cosmic Mysteries</p>
+        <p>&copy; 2026 Black Holes - Cosmic Mysteries</p>
         <p>Explore the wonders of the universe</p>
     </footer>
 </body>
