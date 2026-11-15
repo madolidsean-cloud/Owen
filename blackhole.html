@@ -142,19 +142,11 @@
         }
 
         .visual-example img,
-        .visual-example iframe {
+        .visual-example svg {
             display: block;
             width: 100%;
             border: 0;
             border-radius: 6px;
-        }
-
-        .visual-example iframe {
-            aspect-ratio: 16 / 9;
-        }
-
-        .visual-example img {
-            height: auto;
         }
 
         .visual-example figcaption {
@@ -325,10 +317,39 @@
                 </article>
             </div>
             <figure class="visual-example">
-                <iframe src="https://www.youtube-nocookie.com/embed/zUYU87MBlN8" title="NASA animation comparing the sizes of black holes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized illustration of black holes of different sizes">
+                    <defs>
+                        <radialGradient id="bg1" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#0f172a"/>
+                            <stop offset="55%" stop-color="#020817"/>
+                            <stop offset="100%" stop-color="#01050a"/>
+                        </radialGradient>
+                    </defs>
+                    <rect width="900" height="420" fill="url(#bg1)"/>
+
+                    <g opacity="0.9">
+                        <circle cx="140" cy="210" r="36" fill="#0b1020" stroke="#c7d2fe" stroke-width="3"/>
+                        <circle cx="140" cy="210" r="55" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="8 10"/>
+                        <text x="140" y="315" text-anchor="middle" fill="#dbeafe" font-size="22" font-family="Segoe UI, Arial, sans-serif">Stellar</text>
+
+                        <circle cx="440" cy="210" r="72" fill="#0b1020" stroke="#c7d2fe" stroke-width="3"/>
+                        <circle cx="440" cy="210" r="112" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="8 10"/>
+                        <text x="440" y="315" text-anchor="middle" fill="#dbeafe" font-size="22" font-family="Segoe UI, Arial, sans-serif">Intermediate</text>
+
+                        <circle cx="720" cy="210" r="128" fill="#0b1020" stroke="#c7d2fe" stroke-width="3"/>
+                        <circle cx="720" cy="210" r="170" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="8 10"/>
+                        <text x="720" y="315" text-anchor="middle" fill="#dbeafe" font-size="22" font-family="Segoe UI, Arial, sans-serif">Supermassive</text>
+                    </g>
+
+                    <g fill="#dbeafe" font-size="14" font-family="Segoe UI, Arial, sans-serif">
+                        <text x="115" y="173">~10 solar masses</text>
+                        <text x="395" y="185">~10^2–10^5 solar masses</text>
+                        <text x="640" y="175">~10^6–10^10 solar masses</text>
+                    </g>
+                </svg>
                 <figcaption>
-                    <p><strong>Visual example:</strong> A NASA animation comparing the enormous scales of supermassive black holes. The comparison illustrates size and does not show the black holes themselves as visible objects.</p>
-                    <p class="visual-credit">Credit: NASA's Goddard Space Flight Center. <a href="https://svs.gsfc.nasa.gov/14149/" target="_blank" rel="noopener noreferrer">View the NASA SVS source and full credits</a>.</p>
+                    <p><strong>Visual example:</strong> A schematic comparison of different black-hole size classes. This is a simplified illustration used for scale, not a direct image of a real black hole.</p>
+                    <p class="visual-credit">Conceptual illustration created for educational use.</p>
                 </figcaption>
             </figure>
         </section>
@@ -344,10 +365,43 @@
                 a black hole; some leave neutron stars instead.
             </p>
             <figure class="visual-example">
-                <iframe src="https://www.youtube-nocookie.com/embed/57P5FFdmij8" title="NASA animation of a supernova producing a black hole" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized supernova and black hole formation illustration">
+                    <defs>
+                        <linearGradient id="space1" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#020817"/>
+                            <stop offset="50%" stop-color="#0b1120"/>
+                            <stop offset="100%" stop-color="#111827"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="900" height="420" fill="url(#space1)"/>
+
+                    <circle cx="130" cy="220" r="52" fill="#fbbf24" opacity="0.9"/>
+                    <circle cx="130" cy="220" r="70" fill="none" stroke="#fcd34d" stroke-width="2" opacity="0.8"/>
+                    <text x="130" y="310" text-anchor="middle" fill="#fef3c7" font-size="22" font-family="Segoe UI, Arial, sans-serif">Massive star</text>
+
+                    <g opacity="0.9">
+                        <circle cx="420" cy="220" r="18" fill="#f97316"/>
+                        <circle cx="420" cy="220" r="28" fill="none" stroke="#fbbf24" stroke-width="2"/>
+                        <circle cx="455" cy="220" r="24" fill="#fbbf24" opacity="0.6"/>
+                        <circle cx="485" cy="220" r="28" fill="#f59e0b" opacity="0.7"/>
+                        <circle cx="520" cy="220" r="34" fill="#fbbf24" opacity="0.5"/>
+                        <path d="M 430 210 C 470 145, 570 145, 620 210" fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.8"/>
+                        <path d="M 430 230 C 470 295, 570 295, 620 230" fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.8"/>
+                    </g>
+
+                    <circle cx="710" cy="220" r="52" fill="#020617" stroke="#cbd5e1" stroke-width="3"/>
+                    <circle cx="710" cy="220" r="80" fill="none" stroke="#93c5fd" stroke-width="2" stroke-dasharray="8 12"/>
+                    <text x="710" y="310" text-anchor="middle" fill="#dbeafe" font-size="22" font-family="Segoe UI, Arial, sans-serif">Black hole</text>
+
+                    <g font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#e2e8f0">
+                        <text x="245" y="160">fuel exhausted</text>
+                        <text x="440" y="170">core collapses</text>
+                        <text x="638" y="170">event horizon forms</text>
+                    </g>
+                </svg>
                 <figcaption>
-                    <p><strong>Visual example:</strong> NASA animation showing a supernova and the formation of a black hole. This is a scientific animation, not footage of an event observed in real time.</p>
-                    <p class="visual-credit">Credit: NASA/CXC/A. Hobart. <a href="https://svs.gsfc.nasa.gov/10508/" target="_blank" rel="noopener noreferrer">View the NASA SVS source</a>.</p>
+                    <p><strong>Visual example:</strong> A simplified illustration of a massive star exhausting fuel, collapsing inward, and leaving behind a black hole.</p>
+                    <p class="visual-credit">Conceptual illustration for educational use.</p>
                 </figcaption>
             </figure>
             <h3>Possible routes to the first giant black holes</h3>
@@ -387,9 +441,7 @@
                 photograph of a black hole or of one forming.
             </p>
             <figure class="visual-example">
-                <a href="https://science.nasa.gov/asset/webb/evidence-of-a-black-hole-star/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://science.nasa.gov/system/news_items_cover_images/000/033/800/original/GLIMPSE-17775_fullres.jpg" alt="Artist's illustration of a proposed black-hole star: a growing black hole surrounded by a thick envelope of glowing gas">
-                </a>
+                <img src="https://science.nasa.gov/system/news_items_cover_images/000/033/800/original/GLIMPSE-17775_fullres.jpg" alt="Artist illustration of a black-hole star, a dense gas envelope surrounding a growing black hole">
                 <figcaption>
                     <p><strong>Artist's concept:</strong> A possible black-hole star—an accreting black hole surrounded by dense gas. This is an illustration of the proposed interpretation, not a photograph of the object or direct evidence of its appearance.</p>
                     <p class="visual-credit">Illustration: NASA, ESA, CSA, Vasily Kokorev (UT Austin); designer Leah Hustak (STScI). <a href="https://science.nasa.gov/asset/webb/evidence-of-a-black-hole-star/" target="_blank" rel="noopener noreferrer">View NASA's explanation and source image</a>.</p>
@@ -447,10 +499,34 @@
                 important research frameworks and thought experiments—not confirmed descriptions of an interior.
             </p>
             <figure class="visual-example">
-                <iframe src="https://www.youtube-nocookie.com/embed/icE1gzn_qxc" title="NASA theoretical visualization of a camera approaching and crossing a black hole's event horizon" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized event horizon and interior conceptual illustration">
+                    <defs>
+                        <radialGradient id="bhIll" cx="35%" cy="50%" r="60%">
+                            <stop offset="0%" stop-color="#1f2937"/>
+                            <stop offset="20%" stop-color="#020617"/>
+                            <stop offset="38%" stop-color="#030712"/>
+                            <stop offset="100%" stop-color="#01050a"/>
+                        </radialGradient>
+                    </defs>
+                    <rect width="900" height="420" fill="#030712"/>
+                    <g>
+                        <circle cx="270" cy="210" r="118" fill="none" stroke="#7dd3fc" stroke-width="3" stroke-dasharray="12 12" opacity="0.9"/>
+                        <circle cx="270" cy="210" r="66" fill="url(#bhIll)" stroke="#dbeafe" stroke-width="4"/>
+                        <circle cx="270" cy="210" r="28" fill="#02050a"/>
+
+                        <path d="M 430 110 C 540 170, 620 170, 700 210 C 620 250, 540 250, 430 310" fill="none" stroke="#93c5fd" stroke-width="3" opacity="0.8"/>
+                        <path d="M 430 150 C 520 188, 590 190, 690 210" fill="none" stroke="#cbd5e1" stroke-width="2" opacity="0.7"/>
+                        <path d="M 430 270 C 520 232, 590 230, 690 210" fill="none" stroke="#cbd5e1" stroke-width="2" opacity="0.7"/>
+
+                        <text x="270" y="350" text-anchor="middle" fill="#dbeafe" font-size="24" font-family="Segoe UI, Arial, sans-serif">Event horizon</text>
+                        <text x="660" y="160" fill="#e0f2fe" font-size="20" font-family="Segoe UI, Arial, sans-serif">Possible</text>
+                        <text x="660" y="188" fill="#e0f2fe" font-size="20" font-family="Segoe UI, Arial, sans-serif">quantum-gravity</text>
+                        <text x="660" y="216" fill="#e0f2fe" font-size="20" font-family="Segoe UI, Arial, sans-serif">regime</text>
+                    </g>
+                </svg>
                 <figcaption>
-                    <p><strong>Theoretical visualization:</strong> A simulated camera journey toward and across an event horizon. The inside view is calculated from physical models; it is not filmed or directly observed.</p>
-                    <p class="visual-credit">Credit: NASA's Goddard Space Flight Center/Jeremy Schnittman and Brian Powell. <a href="https://svs.gsfc.nasa.gov/14576/" target="_blank" rel="noopener noreferrer">View the NASA SVS visualization and full credits</a>.</p>
+                    <p><strong>Conceptual still:</strong> A black hole with a highlighted event horizon and a speculative interior region beyond classical physics. This is not a real image of the inside of a black hole.</p>
+                    <p class="visual-credit">Theoretical visualization for educational use. Real interiors cannot be observed directly.</p>
                 </figcaption>
             </figure>
             <div class="info-box">
