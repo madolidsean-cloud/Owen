@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore and compare interactive black-hole models and planets.">
+    <title>Black Hole Size Explorer</title>
+    <style>
+        :root { color-scheme: dark; --panel: rgba(13,20,38,.88); --cyan: #75d7ff; }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; overflow: hidden; background: #02050d; color: #f4f7ff; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        .back { position: fixed; top: 18px; left: 18px; z-index: 10; color: white; text-decoration: none; background: var(--panel); border: 1px solid #385074; border-radius: 999px; padding: 10px 16px; backdrop-filter: blur(8px); }
+        .back:hover, .back:focus-visible { border-color: var(--cyan); outline: none; }
+        canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+        canvas:active { cursor: grabbing; }
+        .controls { position: fixed; top: 18px; right: 18px; width: min(320px,calc(100vw - 36px)); max-height: calc(100vh - 36px); overflow-y: auto; z-index: 10; background: var(--panel); border: 1px solid #385074; border-radius: 14px; padding: 16px; backdrop-filter: blur(10px); }
+        .controls h1 { font-size: 1.25rem; margin: 0 0 12px; }
+        label { display: block; font-size: .82rem; margin: 10px 0 5px; color: #bfcbe0; }
+        select, button { width: 100%; border-radius: 8px; border: 1px solid #4b5d79; background: #18243a; color: white; padding: 9px 10px; font: inherit; }
+        button { cursor: pointer; margin-top: 8px; }
+        button:hover, button:focus-visible, select:focus-visible { border-color: var(--cyan); outline: none; }
+        .planet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+        .planet-grid button { margin: 0; }
+        .stats { margin-top: 12px; padding-top: 12px; border-top: 1px solid #385074; font-size: .85rem; line-height: 1.55; }
+        .stats strong { color: #94e0ff; }
+        .hint { position: fixed; left: 18px; bottom: 18px; z-index: 10; background: var(--panel); border: 1px solid #385074; border-radius: 8px; padding: 8px 12px; color: #cad5e8; font-size: .82rem; pointer-events: none; }
+        @media (max-width:700px) { .controls { top:auto; bottom:12px; right:12px; } .hint { display:none; } .back { top:12px; left:12px; } }
+    </style>
+</head>
+<body>
+    <a class="back" href="blackhole.html">← Back to the article</a>
+    <canvas id="viewer" aria-label="Interactive model for comparing a black hole and planets"></canvas>
+
+    <aside class="controls" aria-label="Viewer controls">
+        <h1>Size &amp; Scale Explorer</h1>
+        <label for="holeType">Black-hole type</label>
+        <select id="holeType">
+            <option value="stellar">Stellar-mass (10 solar masses)</option>
+            <option value="intermediate">Intermediate-mass (10,000 solar masses)</option>
+            <option value="supermassive">Supermassive (4 million solar masses)</option>
+        </select>
+
+        <label>Add a planet</label>
+        <div class="planet-grid">
+            <button data-planet="earth">Earth</button>
+            <button data-planet="jupiter">Jupiter</button>
+            <button data-planet="sun">Sun</button>
+            <button id="clearPlanets">Clear planets</button>
+        </div>
+        <button id="resetView">Reset view</button>
+        <div class="stats" id="stats" aria-live="polite"></div>
+    </aside>
+
+    <div class="hint">Drag to move · Scroll or pinch to zoom</div>
+
+    <script>
+        const canvas = document.getElementById('viewer');
+        const ctx = canvas.getContext('2d');
+        const holeSelect = document.getElementById('holeType');
+        const stats = document.getElementById('stats');
+
+        const types = {
+            stellar: { name: 'Stellar-mass', mass: '10', radius: 52 },
+            intermediate: { name: 'Intermediate-mass', mass: '10,000', radius: 88 },
+            supermassive: { name: 'Supermassive', mass: '4 million', radius: 130 }
+        };
+
+        const planets = {
+            earth: { name: 'Earth', color: '#4b9cff', radius: 8 },
+            jupiter: { name: 'Jupiter', color: '#d6a36d', radius: 18 },
+            sun: { name: 'Sun', color: '#ffd166', radius: 36 }
+        };
+
+        let holeType = 'stellar';
+        let objects = [];
+        let offsetX = 0;
+        let offsetY = 0;
+        let zoom = 1;
+        let dragging = false;
+        let dragStart = null;
+
+        function resize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = innerWidth * dpr;
+            canvas.height = innerHeight * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function drawBackground() {
+            ctx.fillStyle = '#02050d';
+            ctx.fillRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < 180; i++) {
+                const seed = (i * 16807) % 2147483647;
+                const x = (seed % 997) / 997 * innerWidth;
+                const y = ((seed * 37) % 991) / 991 * innerHeight;
+                ctx.fillStyle = `rgba(190,220,255,${0.25 + (i * 13 % 60) / 100})`;
+                ctx.fillRect(x, y, i % 11 === 0 ? 2 : 1, i % 11 === 0 ? 2 : 1);
+            }
+        }
+
+        function drawHole(x, y, radius) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(1, 0.36);
+            const disk = ctx.createRadialGradient(0,0,radius*.45,0,0,radius*2.7);
+            disk.addColorStop(0,'rgba(255,220,115,.95)');
+            disk.addColorStop(.22,'rgba(255,125,55,.75)');
+            disk.addColorStop(.55,'rgba(121,84,194,.32)');
+            disk.addColorStop(1,'rgba(20,50,130,0)');
+            ctx.fillStyle = disk;
+            ctx.beginPath();
+            ctx.arc(0,0,radius*2.7,0,Math.PI*2);
+            ctx.fill();
+            ctx.restore();
+
+            ctx.beginPath();
+            ctx.arc(x,y,radius,0,Math.PI*2);
+            ctx.fillStyle = '#000';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(205,226,255,.95)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        function draw() {
+            drawBackground();
+            ctx.save();
+            ctx.translate(innerWidth/2 + offsetX, innerHeight/2 + offsetY);
+            ctx.scale(zoom, zoom);
+
+            const hole = types[holeType];
+            drawHole(0,0,hole.radius);
+
+            objects.forEach((object,index) => {
+                const angle = index * 2.2 + .7;
+                const distance = hole.radius + object.radius + 55 + index * 38;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                ctx.beginPath();
+                ctx.arc(x,y,object.radius,0,Math.PI*2);
+                ctx.fillStyle = object.color;
+                ctx.shadowBlur = 14;
+                ctx.shadowColor = object.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = '#eef5ff';
+                ctx.font = '13px Segoe UI, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(object.name,x,y + object.radius + 18);
+            });
+            ctx.restore();
+        }
+
+        function updateStats() {
+            const hole = types[holeType];
+            stats.innerHTML = `<strong>${hole.name} black hole</strong><br>Approximate mass: ${hole.mass} solar masses<br>Objects shown: ${objects.length}<br><br>This is a scale visualization, not a physically exact rendering.`;
+        }
+
+        holeSelect.addEventListener('change', () => { holeType = holeSelect.value; updateStats(); draw(); });
+
+        document.querySelectorAll('[data-planet]').forEach(button => {
+            button.addEventListener('click', () => {
+                objects.push({...planets[button.dataset.planet]});
+                updateStats();
+                draw();
+            });
+        });
+
+        document.getElementById('clearPlanets').addEventListener('click', () => { objects=[]; updateStats(); draw(); });
+        document.getElementById('resetView').addEventListener('click', () => { offsetX=0; offsetY=0; zoom=1; draw(); });
+
+        canvas.addEventListener('pointerdown', event => {
+            dragging=true;
+            dragStart={x:event.clientX-offsetX,y:event.clientY-offsetY};
+            canvas.setPointerCapture(event.pointerId);
+        });
+        canvas.addEventListener('pointermove', event => {
+            if(!dragging)return;
+            offsetX=event.clientX-dragStart.x;
+            offsetY=event.clientY-dragStart.y;
+            draw();
+        });
+        canvas.addEventListener('pointerup',()=>dragging=false);
+        canvas.addEventListener('pointercancel',()=>dragging=false);
+        canvas.addEventListener('wheel', event => {
+            event.preventDefault();
+            zoom=Math.max(.35,Math.min(3,zoom*(event.deltaY>0?.9:1.1)));
+            draw();
+        },{passive:false});
+
+        window.addEventListener('resize',()=>{resize();draw();});
+        resize();
+        updateStats();
+        draw();
+    </script>
+</body>
+</html>
